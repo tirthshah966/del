@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kushal Dalal | Chartered Accountant & Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #000000;
+            --secondary-black: #111111;
+            --accent-yellow: #FFD700;
+            --accent-gold: #D4AF37;
+            --text-on-dark: #F0F0F0;
+            --text-muted: #AAAAAA;
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --box-shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-black);
+            color: var(--text-on-dark);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 25%);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 30px auto;
+            background-color: var(--secondary-black);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-heavy);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        /* ===== PROFILE HEADER ===== */
+        .profile-header {
+            padding: 60px 50px 40px;
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+        }
+
+        .profile-image-container {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            margin-right: 60px;
+            flex-shrink: 0;
+        }
+
+        /* The CA India Logo as a background layer */
+        .profile-image-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: url('https://image2url.com/r2/default/images/1768995879278-7f96f64f-27ea-4f41-8523-6f4cb49cb908.png') center/70% no-repeat;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0.4;
+            z-index: 1;
+            border: 2px solid var(--accent-yellow);
+            filter: sepia(1) saturate(2) brightness(0.9);
+        }
+
+        /* The main profile picture layer */
+        .profile-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: url('https://image2url.com/r2/default/images/1768995766506-f57b2082-62a6-4376-911e-1a5bda38e0df.png') center/cover no-repeat;
+            border: 6px solid var(--accent-yellow);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+            z-index: 2;
+            transition: var(--transition);
+        }
+        .profile-image:hover { transform: scale(1.02); border-color: var(--accent-gold); }
+
+        .profile-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-gold));
+            color: var(--primary-black);
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 8px 18px;
+            border-radius: 30px;
+            z-index: 3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Profile Text Info */
+        .profile-info { flex-grow: 1; }
+        .profile-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-yellow);
+            letter-spacing: -0.5px;
+        }
+        .profile-info .title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--text-on-dark);
+        }
+        .profile-info .company {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 500;
+        }
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-yellow);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-black);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+        .short-bio {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-top: 15px;
+        }
+
+        /* ===== ACTION BUTTONS BAR ===== */
+        .action-bar {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-yellow);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .action-btn:hover {
+            background: var(--accent-yellow);
+            color: var(--primary-black);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 215, 0, 0.4);
+        }
+        .action-btn i { font-size: 1.2rem; }
+
+        /* ===== MAIN CONTENT LAYOUT ===== */
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            padding: 50px;
+        }
+        @media (max-width: 1100px) {
+            .profile-content { grid-template-columns: 1fr; }
+            .profile-header { flex-direction: column; align-items: center; text-align: center; }
+            .profile-image-container { margin-right: 0; margin-bottom: 40px; }
+            .profile-info h1 { font-size: 2.8rem; }
+            .action-bar { justify-content: center; }
+        }
+
+        /* ===== CARD STYLES ===== */
+        .card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            border-left: 5px solid var(--accent-yellow);
+            margin-bottom: 35px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+        .card h2 {
+            color: var(--accent-yellow);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            display: flex;
+            align-items: center;
+        }
+        .card h2 i {
+            margin-right: 15px;
+            background: rgba(255, 215, 0, 0.15);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Contact Items */
+        .contact-info { display: flex; flex-direction: column; gap: 22px; }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-item i {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--accent-yellow);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--text-on-dark);
+        }
+        .contact-details p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 10px;
+        }
+        .social-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            width: 80px;
+            transition: var(--transition);
+        }
+        .social-icon .icon-container {
+            width: 65px;
+            height: 65px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 1.7rem;
+            transition: var(--transition);
+        }
+        .social-icon span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .whatsapp .icon-container { background: #25D366; color: white; }
+        .linkedin .icon-container { background: #0077B5; color: white; }
+        .email .icon-container { background: #EA4335; color: white; }
+        .instagram .icon-container { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: white; }
+        .youtube .icon-container { background: #FF0000; color: white; }
+        .facebook .icon-container { background: #1877F2; color: white; }
+        .website .icon-container { background: var(--primary-black); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); }
+        .social-icon:hover { transform: translateY(-8px); }
+        .social-icon:hover .icon-container { transform: scale(1.15); }
+
+        /* Map and QR Sections */
+        .map-container, .qr-section {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            margin-top: 20px;
+            padding: 25px;
+            text-align: center;
+        }
+        .map-placeholder i, .qr-code i {
+            font-size: 3.5rem;
+            color: var(--accent-yellow);
+            margin-bottom: 20px;
+        }
+        .map-link, .qr-note {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--accent-yellow);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 3px;
+            transition: var(--transition);
+        }
+        .map-link:hover, .qr-note:hover { border-bottom-color: var(--accent-yellow); }
+
+        /* Experience & Education Items */
+        .experience-item, .education-item {
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .experience-item:last-child, .education-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .experience-item h3, .education-item h3 { color: var(--text-on-dark); font-size: 1.4rem; margin-bottom: 8px; }
+        .company { color: var(--accent-gold); font-weight: 500; margin-bottom: 8px; font-size: 1.15rem; }
+        .date { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; display: flex; align-items: center; }
+        .date i { margin-right: 10px; color: var(--accent-yellow); }
+        .company-description { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; }
+
+        /* Resources */
+        .resources-container { display: flex; flex-wrap: wrap; gap: 18px; }
+        .resource-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            width: calc(50% - 9px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-on-dark);
+        }
+        .resource-item:hover {
+            background: rgba(255, 215, 0, 0.12);
+            transform: translateY(-5px);
+            border-color: var(--accent-yellow);
+        }
+        .resource-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--accent-yellow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 18px;
+            color: var(--primary-black);
+            font-size: 1.4rem;
+        }
+        .resource-info h4 { font-size: 1.1rem; margin-bottom: 6px; color: var(--text-on-dark); }
+        .resource-info p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* ===== UNITAP FOOTER ===== */
+        .profile-footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .unitap-branding { margin-bottom: 30px; }
+        .unitap-logo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-yellow);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .unitap-tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .footer-links a:hover { color: var(--accent-yellow); }
+        .copyright {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card { animation: fadeInUp 0.7s ease forwards; opacity: 0; }
+        .card:nth-child(1) { animation-delay: 0.1s; } .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; } .card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-image-container">
+                <div class="profile-image-bg"></div> <!-- CA India Logo BG -->
+                <div class="profile-image"></div> <!-- Main Profile Picture -->
+                <div class="profile-badge">CA India</div>
+            </div>
+            <div class="profile-info">
+                <h1>Kushal Dalal</h1>
+                <div class="title">Partner & Chartered Accountant</div>
+                <div class="company">
+                    <img src="https://image2url.com/r2/default/images/1768995879278-7f96f64f-27ea-4f41-8523-6f4cb49cb908.png" alt="image" loading="lazy" width="50" height="50"/>
+                    <span> <hr> OP Rathi & Co. <hr> </span>
+                </div>
+                <div class="short-bio">
+                    A distinguished Fellow Chartered Accountant (FCA) with over 12 years of expertise in corporate finance, business assurance, and strategic advisory. Leading O P Rathi & Co. in delivering integrated solutions that enhance compliance, operational efficiency, and financial growth for diverse clients across India.
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons Bar -->
+        <div class="action-bar">
+            <div class="action-buttons">
+                <a href="#" class="action-btn" id="shareProfileBtn">
+                    <i class="fas fa-share-alt"></i> Share Profile
+                </a>
+                <a href="#" class="action-btn" id="saveContactBtn">
+                    <i class="fas fa-address-book"></i> Save Contact
+                </a>
+                <a href="#" class="action-btn" id="downloadVCardBtn">
+                    <i class="fas fa-download"></i> Download vCard
+                </a>
+                <a href="tel:+912652387747" class="action-btn">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <a href="#map-section" class="action-btn">
+                    <i class="fas fa-map-marker-alt"></i> Get Directions
+                </a>
+            </div>
+            <!--<div class="qr-toggle">-->
+            <!--    <a href="#qr-section" class="action-btn" style="background:rgba(255,215,0,0.15);">-->
+            <!--        <i class="fas fa-qrcode"></i> Show QR Code-->
+            <!--    </a>-->
+            <!--</div>-->
+        </div>
+
+        <!-- Main Content -->
+        <div class="profile-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Contact Card -->
+                <div class="card">
+                    <h2><i class="fas fa-address-card"></i> Contact Details</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-details">
+                                <h4>Professional Email</h4>
+                                <p>kushal.dalal@oprathi.in</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-details">
+                                <h4>Office Phone</h4>
+                                <p>+91 265 238 7747</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div class="contact-details">
+                                <h4>Mobile / WhatsApp</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-details">
+                                <h4>Office Address</h4>
+                                <p>Sopan Baug, Pune, Maharashtra 411001</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div style="margin-top: 35px;">
+                        <h3 style="color:var(--accent-yellow); margin-bottom:20px; font-size:1.4rem;">
+                            <i class="fas fa-share-alt" style="margin-right:10px;"></i> Connect Directly
+                        </h3>
+                        <div class="social-icons">
+                            <a href="https://wa.me/919876543210" target="_blank" class="social-icon whatsapp">
+                                <div class="icon-container"><i class="fab fa-whatsapp"></i></div>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="mailto:kushal.dalal@oprathi.in" class="social-icon email">
+                                <div class="icon-container"><i class="fas fa-envelope"></i></div>
+                                <span>Email</span>
+                            </a>
+                            <a href="https://linkedin.com/in/kushaldalal" target="_blank" class="social-icon linkedin">
+                                <div class="icon-container"><i class="fab fa-linkedin-in"></i></div>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://instagram.com/kushaldalal" target="_blank" class="social-icon instagram">
+                                <div class="icon-container"><i class="fab fa-instagram"></i></div>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://oprathi.in" target="_blank" class="social-icon website">
+                                <div class="icon-container"><i class="fas fa-globe"></i></div>
+                                <span>Website</span>
+                            </a>
+                            <a href="https://youtube.com/c/kushaldalal" target="_blank" class="social-icon youtube">
+                                <div class="icon-container"><i class="fab fa-youtube"></i></div>
+                                <span>YouTube</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Map Section -->
+                    <div class="map-container" id="map-section">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Pune Office Location</p>
+                            <a href="https://maps.google.com/?q=Sopan+Baug,+Pune,+Maharashtra,+411001,+India"
+                               target="_blank" class="map-link">Open in Google Maps</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Experience Card -->
+                <div class="card">
+                    <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                    <div class="experience-item">
+                        <h3>Partner</h3>
+                        <div class="company">O P Rathi & Co.</div>
+                        <div class="date"><i class="far fa-calendar"></i> 2024 – Present (2 years)</div>
+                        <div class="company-description">
+                            Lead a premier firm providing business assurance, corporate finance, and technology solutions. Oversee high-profile client portfolios, ensuring strategic tax planning and regulatory compliance to drive business performance.
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Senior Manager</h3>
+                        <div class="company">Elecon Engineering Company Limited</div>
+                        <div class="date"><i class="far fa-calendar"></i> 2023 – 2024</div>
+                        <div class="company-description">
+                            Directed financial operations and strategic planning for engineering projects, managing budgeting, forecasting, and multi-division financial reporting.
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Partner</h3>
+                        <div class="company">C F Patel & Co.</div>
+                        <div class="date"><i class="far fa-calendar"></i> 2013 – 2023 (10 years)</div>
+                        <div class="company-description">
+                            Delivered comprehensive accounting, audit, and advisory services, specializing in tax strategy and financial management for SMEs and large corporations.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education & Resources -->
+                <div class="card">
+                    <h2><i class="fas fa-graduation-cap"></i> Credentials & Resources</h2>
+                    <div class="education-item">
+                        <h3>Fellow Chartered Accountant (FCA)</h3>
+                        <div class="company">The Institute of Chartered Accountants of India</div>
+                        <div class="date"><i class="far fa-calendar"></i> Membership: 2012</div>
+                    </div>
+                    <div class="education-item">
+                        <h3>Master of Commerce</h3>
+                        <div class="company">Sardar Patel University, Vallabh Vidyanagar</div>
+                        <div class="date"><i class="far fa-calendar"></i> 2009 – 2011</div>
+                    </div>
+
+                    <!-- Resource Files -->
+                    <div style="margin-top: 40px;">
+                        <h3 style="color:var(--accent-yellow); margin-bottom:25px; font-size:1.4rem;">
+                            <i class="fas fa-paperclip"></i> Brochures & Media
+                        </h3>
+                        <div class="resources-container">
+                            <a href="#" class="resource-item">
+                                <div class="resource-icon"><i class="fas fa-file-pdf"></i></div>
+                                <div class="resource-info">
+                                    <h4>Firm Brochure</h4>
+                                    <p>PDF | O P Rathi Services</p>
+                                </div>
+                            </a>
+                            <a href="#" class="resource-item">
+                                <div class="resource-icon"><i class="fas fa-video"></i></div>
+                                <div class="resource-info">
+                                    <h4>Expert Talk</h4>
+                                    <p>Video | Finance Insights</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Code Card -->
+                <div class="card" id="qr-section">
+                    <h2><i class="fas fa-qrcode"></i> Digital Connect</h2>
+                    <div class="qr-section">
+                        <div class="qr-code">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <p class="qr-note">Scan to save this digital contact card</p>
+                        <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.9rem;">
+                            Share this link: <strong style="color: var(--accent-yellow);">yourdomain.com/kushaldalal</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UNITAP Footer -->
+        <div class="profile-footer">
+            <div class="unitap-branding">
+                <div class="unitap-logo">UNITAP</div>
+                <div class="unitap-tagline">
+                    Elevating professional identity through sophisticated digital profiles. Seamlessly share your credentials, connect with purpose, and leave a lasting impression.
+                </div>
+            </div>
+            <!--<div class="footer-links">-->
+            <!--    <a href="https://unitap.com" target="_blank">Website</a>-->
+            <!--    <a href="https://unitap.com/contact" target="_blank">Contact</a>-->
+            <!--    <a href="https://unitap.com/privacy" target="_blank">Privacy</a>-->
+            <!--    <a href="https://unitap.com/terms" target="_blank">Terms</a>-->
+            <!--</div>-->
+            <div class="copyright">
+                <p>© 2025 Kushal Dalal. All professional rights reserved.</p>
+                <p style="margin-top: 8px; font-size: 0.9rem;">This dynamic digital profile is powered by UNITAP.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ===== ACTION BUTTON FUNCTIONALITY =====
+            const shareBtn = document.getElementById('shareProfileBtn');
+            const saveContactBtn = document.getElementById('saveContactBtn');
+            const downloadVCardBtn = document.getElementById('downloadVCardBtn');
+
+            // 1. SHARE PROFILE
+            shareBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const profileUrl = window.location.href;
+                const profileTitle = 'Kushal Dalal | Chartered Accountant';
+                const profileText = 'Check out the professional digital profile of Kushal Dalal, Partner at O P Rathi & Co.';
+
+                if (navigator.share) {
+                    navigator.share({
+                        title: profileTitle,
+                        text: profileText,
+                        url: profileUrl,
+                    })
+                    .then(() => console.log('Profile shared successfully'))
+                    .catch(err => console.log('Error sharing:', err));
+                } else {
+                    // Fallback: Copy to clipboard
+                    navigator.clipboard.writeText(profileUrl)
+                        .then(() => {
+                            alert('Profile link copied to clipboard!');
+                        })
+                        .catch(err => {
+                            prompt('Copy this link to share:', profileUrl);
+                        });
+                }
+            });
+
+            // 2. SAVE CONTACT (Web Share API for vCard or fallback)
+            saveContactBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const vCardData = generateVCard();
+                const blob = new Blob([vCardData], { type: 'text/vcard' });
+                const vCardUrl = URL.createObjectURL(blob);
+
+                // Try to use the Web Share API first for a better experience
+                if (navigator.share && navigator.canShare && navigator.canShare({ files: [blob] })) {
+                    const vCardFile = new File([blob], 'Kushal_Dalal.vcf', { type: 'text/vcard' });
+                    navigator.share({
+                        files: [vCardFile],
+                        title: 'Save Kushal Dalal Contact',
+                        text: 'Add this contact to your address book.',
+                    });
+                } else {
+                    // Fallback to download
+                    const a = document.createElement('a');
+                    a.href = vCardUrl;
+                    a.download = 'Kushal_Dalal_Contact.vcf';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    alert('Contact file downloaded. Open it to add to your address book.');
+                }
+                setTimeout(() => URL.revokeObjectURL(vCardUrl), 100);
+            });
+
+            // 3. DOWNLOAD V-CARD (Explicit button)
+            downloadVCardBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const vCardData = generateVCard();
+                const blob = new Blob([vCardData], { type: 'text/vcard' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Kushal_Dalais_Professional.vcf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+
+            // Function to generate vCard data
+            function generateVCard() {
+                return `BEGIN:VCARD
+VERSION:3.0
+FN:Kushal Dalal
+N:Dalal;Kushal;;;
+TITLE:Partner & Chartered Accountant
+ORG:O P Rathi & Co.
+TEL;TYPE=WORK,VOICE:+91 265 238 7747
+TEL;TYPE=CELL,WHATSAPP:+91 98765 43210
+EMAIL;TYPE=PREF,INTERNET:kushal.dalal@oprathi.in
+ADR;TYPE=WORK:;;Sopan Baug;Pune;Maharashtra;411001;India
+URL:https://oprathi.in
+URL;TYPE=LINKEDIN:https://linkedin.com/in/kushaldalal
+NOTE:Digital Profile: ${window.location.href}
+REV:${new Date().toISOString()}
+END:VCARD`;
+            }
+
+            // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ===== ANIMATION ON SCROLL =====
+            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // ===== SOCIAL ICON HOVER EFFECTS =====
+            document.querySelectorAll('.social-icon').forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // ===== CONSOLE GREETING =====
+            console.log('%c✅ Kushal Dalal Digital Profile Loaded', 'color: #FFD700; font-size: 14px; font-weight: bold;');
+            console.log('%cPowered by UNITAP | Dynamic & Professional', 'color: #AAA; font-size: 12px;');
+        });
+    </script>
+</body>
+</html>
